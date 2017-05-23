@@ -1,0 +1,82 @@
+* Introduction
+Back in 2014, I tried taking [[https://www.coursera.org/instructor/~1289035][Pascal Van Hentenryck]]'s Coursera course on [[https://www.coursera.org/learn/discrete-optimization][Discreet Optimization]]. It was well over my head, but I feel like I learned a lot watching the videos and trying unsuccessfully to complete the early assignments. Later I came across {Norvig's Book}. 
+*************** TODO create link for {Norvig's Book}.
+*************** END
+Much of Van Hentenryck's course is what was once artificial intelligence. The first important topic is search. Although I had written depth first and breadth first search algorithms in Racket for Tim Roughgarden's [[https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPaced/about][Alogorithms Design and Analysis]] course on Coursera, I didn't understand how to manipulate the implementation.  {Norvig's Book} has a very clear modular approach to search and provides several techniques to potentially improve its performance.
+** A Set of Search Tools
+Search can be described as [see {Norvig's Book} section 6.4]:
+
+  * A start state
+  * A goal state
+  * The successors, or states that can be reached from any other state
+  * The strategy for determining the order in which we search
+
+* Common Lisp
+This is the base implementation since {Norvig's Book} is informing the design.
+** tree search
+
+#+NAME: cl-tree-search
+#+BEGIN_SRC lisp
+  (defun tree-search (states goal-p successors combiner)
+    "Find a state that satisfies goal-p. Start with states.
+  and serach according to successors and combiner."
+    (dbg :search "~&;; Search: ~a" states)
+    (cond
+      ((null states) ;nothing left to search
+       fail)
+      ((funcall goal-p (first-states)) ;found a goal state
+       (first states))
+      (t
+       (tree-search
+        (funcall combiner
+                 (funcall successors (first states))
+                 (rest states))
+        goal-p successors combiner))))
+#+END_SRC
+** goal-p
+One of the things Common Lisp emphasizes is good names. A good name for a predicate generator is =is= ...depending on how 'is' is defined.
+#+NAME: cl-is
+#+BEGIN_SRC lisp
+  (defun is (value)
+    #'(lambda (x) (eql x value)))
+#+END_SRC
+** successors
+As always, Common Lisp has a way of challenging me. Rather than defining a data set to search, Norvig defines a binary tree with a function. Although now that I think about it, that's how we really want to think about search -- we want to think about search over a stream that might be infinite rather than a haystack of fixed size. Even when the stream of possible solutions is bounded, combinatorial explosion produces a solution space that is for practical purposes equivalent to an infinite one.
+#+NAME: cl-infinite-binary-tree
+#+BEGIN_SRC lisp
+  (defun binary-tree (x)
+    (list (* 2 x) (+ 1 (* 2 x))))
+#+END_SRC
+For testing it makes sense to have a finite binary tree as well. Again, the tree is generated with a function (that's the idea of successors), but it prunes the successors that don't meet the criteria. *The important point here, is that =successor= does the pruning.* That was hard to see when I was trying to right these functions previously.
+#+NAME: cl-finite-binary-tree
+#+BEGIN_SRC lisp
+  (defun finite-binary-tree (n)
+    "Return a successor function that generates a binary tree with n nodes."
+    #'(lambda (x)
+        (remove-if #'(lambda (child) (> child n))
+                   (binary-tree x))))
+#+END_SRC
+** depth first
+#+NAME: cl-depth-first
+#+BEGIN_SRC lisp
+  (defun depth-first-search (start goal-p successors)
+    "Search new states first until goal is reached."
+    (tree-search (list start) goal-p successors #'append))
+#+END_SRC
+** breadth first search
+The difference between depth first and breadth first search is that earlier successors are searched before later successors. To create this, use a simple analog to =append=.
+#+NAME: cl-prepend
+#+BEGIN_SRC lisp
+  (defun prepend (x y)
+    "Prepend y to the start of x."
+    (append y x))
+#+END_SRC
+Defining a breadth first search from tree search becomes:
+#+NAME: cl-breadth-first
+#+BEGIN_SRC lisp
+  (defun breadth-first-search (start goal-p successors)
+    "Search oldest states first until goal is reached."
+    (tree-search (list start) goal-p successors #'prepend))
+#+END_SRC
+* Python
+* Smalltalk
