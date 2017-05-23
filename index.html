@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-05-22 Mon 21:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="benrudgers" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgaa8ba8f">1. Introduction</a>
+<ul>
+<li><a href="#org6f9f1b2">1.1. A Set of Search Tools</a></li>
+</ul>
+</li>
+<li><a href="#org50edc63">2. Common Lisp</a>
+<ul>
+<li><a href="#org4809a36">2.1. tree search</a></li>
+<li><a href="#orgabc7637">2.2. goal-p</a></li>
+<li><a href="#org5508813">2.3. successors</a></li>
+<li><a href="#orgb5d52d7">2.4. depth first</a></li>
+<li><a href="#org3fd2060">2.5. breadth first search</a></li>
+<li><a href="#org7bde765">2.6. Helpers</a>
+<ul>
+<li><a href="#org5eb9bf1">2.6.1. auto-generation header</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org0b9ebde">3. Python</a></li>
+<li><a href="#orgb2f3061">4. Smalltalk</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaa8ba8f" class="outline-2">
+<h2 id="orgaa8ba8f"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Back in 2014, I tried taking <a href="https://www.coursera.org/instructor/~1289035">Pascal Van Hentenryck</a>'s Coursera course on <a href="https://www.coursera.org/learn/discrete-optimization">Discreet Optimization</a>. It was well over my head, but I feel like I learned a lot watching the videos and trying unsuccessfully to complete the early assignments. Later I came across {Norvig's Book}. 
+</p>
+<div class="inlinetask">
+<b><span class="todo TODO">TODO</span> create link for {Norvig's Book}.</b><br />
+nil</div>
+<p>
+Much of Van Hentenryck's course is what was once artificial intelligence. The first important topic is search. Although I had written depth first and breadth first search algorithms in Racket for Tim Roughgarden's <a href="https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPaced/about">Alogorithms Design and Analysis</a> course on Coursera, I didn't understand how to manipulate the implementation.  {Norvig's Book} has a very clear modular approach to search and provides several techniques to potentially improve its performance.
+</p>
+</div>
+<div id="outline-container-org6f9f1b2" class="outline-3">
+<h3 id="org6f9f1b2"><span class="section-number-3">1.1</span> A Set of Search Tools</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Search can be described as [see {Norvig's Book} section 6.4]:
+</p>
+
+<ul class="org-ul">
+<li>A start state</li>
+<li>A goal state</li>
+<li>The successors, or states that can be reached from any other state</li>
+<li>The strategy for determining the order in which we search</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50edc63" class="outline-2">
+<h2 id="org50edc63"><span class="section-number-2">2</span> Common Lisp</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This is the base implementation since {Norvig's Book} is informing the design.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp">&lt;&lt;cl-auto-generated-note&gt;&gt;
+
+&lt;&lt;cl-tree-search&gt;&gt;
+
+&lt;&lt;cl-is&gt;&gt;
+
+&lt;&lt;cl-successors&gt;&gt;
+
+&lt;&lt;cl-depth-first&gt;&gt;
+
+&lt;&lt;cl-prepend&gt;&gt;
+
+&lt;&lt;cl-breadth-first&gt;&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-org4809a36" class="outline-3">
+<h3 id="org4809a36"><span class="section-number-3">2.1</span> tree search</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-lisp" id="org510e115">(defun tree-search (states goal-p successors combiner)
+  "Find a state that satisfies goal-p. Start with states.
+and serach according to successors and combiner."
+  (dbg :search "~&amp;;; Search: ~a" states)
+  (cond
+    ((null states) ;nothing left to search
+     fail)
+    ((funcall goal-p (first-states)) ;found a goal state
+     (first states))
+    (t
+     (tree-search
+      (funcall combiner
+               (funcall successors (first states))
+               (rest states))
+      goal-p successors combiner))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgabc7637" class="outline-3">
+<h3 id="orgabc7637"><span class="section-number-3">2.2</span> goal-p</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+One of the things Common Lisp emphasizes is good names. A good name for a predicate generator is <code>is</code> &#x2026;depending on how 'is' is defined.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp" id="org8f47755">(defun is (value)
+  #'(lambda (x) (eql x value)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5508813" class="outline-3">
+<h3 id="org5508813"><span class="section-number-3">2.3</span> successors</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-lisp" id="org12ad606">&lt;&lt;cl-inifinite-binary-tree&gt;&gt;
+
+&lt;&lt;cl-finite-binary-tree&gt;&gt;
+</pre>
+</div>
+<p>
+As always, Common Lisp has a way of challenging me. Rather than defining a data set to search, Norvig defines a binary tree with a function. Although now that I think about it, that's how we really want to think about search &#x2013; we want to think about search over a stream that might be infinite rather than a haystack of fixed size. Even when the stream of possible solutions is bounded, combinatorial explosion produces a solution space that is for practical purposes equivalent to an infinite one.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp" id="org625895c">(defun binary-tree (x)
+  (list (* 2 x) (+ 1 (* 2 x))))
+</pre>
+</div>
+<p>
+For testing it makes sense to have a finite binary tree as well. Again, the tree is generated with a function (that's the idea of successors), but it prunes the successors that don't meet the criteria. <b>The important point here, is that <code>successor</code> does the pruning.</b> That was hard to see when I was trying to right these functions previously.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp" id="org9356e6b">(defun finite-binary-tree (n)
+  "Return a successor function that generates a binary tree with n nodes."
+  #'(lambda (x)
+      (remove-if #'(lambda (child) (&gt; child n))
+                 (binary-tree x))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5d52d7" class="outline-3">
+<h3 id="orgb5d52d7"><span class="section-number-3">2.4</span> depth first</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-lisp" id="org2094a83">(defun depth-first-search (start goal-p successors)
+  "Search new states first until goal is reached."
+  (tree-search (list start) goal-p successors #'append))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3fd2060" class="outline-3">
+<h3 id="org3fd2060"><span class="section-number-3">2.5</span> breadth first search</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+The difference between depth first and breadth first search is that earlier successors are searched before later successors. To create this, use a simple analog to <code>append</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp" id="org05e197e">(defun prepend (x y)
+  "Prepend y to the start of x."
+  (append y x))
+</pre>
+</div>
+<p>
+Defining a breadth first search from tree search becomes:
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp" id="orgaf57081">(defun breadth-first-search (start goal-p successors)
+  "Search oldest states first until goal is reached."
+  (tree-search (list start) goal-p successors #'prepend))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bde765" class="outline-3">
+<h3 id="org7bde765"><span class="section-number-3">2.6</span> Helpers</h3>
+<div class="outline-text-3" id="text-2-6">
+</div><div id="outline-container-org5eb9bf1" class="outline-4">
+<h4 id="org5eb9bf1"><span class="section-number-4">2.6.1</span> auto-generation header</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<div class="org-src-container">
+<pre class="src src-lisp" id="orgc1d7253">;;; This file was autogenerated using org-babel-tangle
+;;; on the literate programming document located in the
+;;; root directory of the git repository.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b9ebde" class="outline-2">
+<h2 id="org0b9ebde"><span class="section-number-2">3</span> Python</h2>
+</div>
+<div id="outline-container-orgb2f3061" class="outline-2">
+<h2 id="orgb2f3061"><span class="section-number-2">4</span> Smalltalk</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: benrudgers</p>
+<p class="date">Created: 2017-05-22 Mon 21:15</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
