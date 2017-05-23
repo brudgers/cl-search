@@ -26,15 +26,13 @@ This is the base implementation since {Norvig's Book} is informing the design.
 
   <<cl-tree-search>>
 
-  <<cl-is>>
-
   <<cl-successors>>
 
   <<cl-depth-first>>
 
-  <<cl-prepend>>
-
   <<cl-breadth-first>>
+
+  <<cl-helpers>>
 #+END_SRC
 ** tree search
 #+NAME: cl-tree-search
@@ -65,6 +63,10 @@ One of the things Common Lisp emphasizes is good names. A good name for a predic
 ** successors
 #+NAME: cl-successors
 #+BEGIN_SRC lisp :noweb tangle
+  ;;;;;;;;;;;;;;;;
+  ;; SUCCESSORS ;;
+  ;;;;;;;;;;;;;;;;
+
   <<cl-inifinite-binary-tree>>
 
   <<cl-finite-binary-tree>>
@@ -107,6 +109,16 @@ Defining a breadth first search from tree search becomes:
     (tree-search (list start) goal-p successors #'prepend))
 #+END_SRC
 ** Helpers
+#+NAME: cl-helpers
+#+BEGIN_SRC lisp
+  ;;;;;;;;;;;;;
+  ;; HELPERS ;;
+  ;;;;;;;;;;;;;
+
+  <<cl-is>>
+
+  <<cl-prepend>>
+#+END_SRC
 *** auto-generation header
 #+NAME: cl-auto-generated-note
 #+BEGIN_SRC lisp

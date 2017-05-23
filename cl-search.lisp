@@ -18,8 +18,9 @@ and serach according to successors and combiner."
                (rest states))
       goal-p successors combiner))))
 
-(defun is (value)
-  #'(lambda (x) (eql x value)))
+;;;;;;;;;;;;;;;;
+;; SUCCESSORS ;;
+;;;;;;;;;;;;;;;;
 
 
 
@@ -33,10 +34,17 @@ and serach according to successors and combiner."
   "Search new states first until goal is reached."
   (tree-search (list start) goal-p successors #'append))
 
-(defun prepend (x y)
-  "Prepend y to the start of x."
-  (append y x))
-
 (defun breadth-first-search (start goal-p successors)
   "Search oldest states first until goal is reached."
   (tree-search (list start) goal-p successors #'prepend))
+
+;;;;;;;;;;;;;
+;; HELPERS ;;
+;;;;;;;;;;;;;
+
+(defun is (value)
+  #'(lambda (x) (eql x value)))
+
+(defun prepend (x y)
+  "Prepend y to the start of x."
+  (append y x))

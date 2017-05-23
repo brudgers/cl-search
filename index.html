@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-22 Mon 21:15 -->
+<!-- 2017-05-22 Mon 21:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -232,32 +232,32 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgaa8ba8f">1. Introduction</a>
+<li><a href="#org5e31373">1. Introduction</a>
 <ul>
-<li><a href="#org6f9f1b2">1.1. A Set of Search Tools</a></li>
+<li><a href="#org00596c3">1.1. A Set of Search Tools</a></li>
 </ul>
 </li>
-<li><a href="#org50edc63">2. Common Lisp</a>
+<li><a href="#orgb42db61">2. Common Lisp</a>
 <ul>
-<li><a href="#org4809a36">2.1. tree search</a></li>
-<li><a href="#orgabc7637">2.2. goal-p</a></li>
-<li><a href="#org5508813">2.3. successors</a></li>
-<li><a href="#orgb5d52d7">2.4. depth first</a></li>
-<li><a href="#org3fd2060">2.5. breadth first search</a></li>
-<li><a href="#org7bde765">2.6. Helpers</a>
+<li><a href="#org18ebe15">2.1. tree search</a></li>
+<li><a href="#org393aa5f">2.2. goal-p</a></li>
+<li><a href="#orgd889af4">2.3. successors</a></li>
+<li><a href="#org01f1320">2.4. depth first</a></li>
+<li><a href="#org6ab535b">2.5. breadth first search</a></li>
+<li><a href="#org571433e">2.6. Helpers</a>
 <ul>
-<li><a href="#org5eb9bf1">2.6.1. auto-generation header</a></li>
+<li><a href="#org48c2da1">2.6.1. auto-generation header</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0b9ebde">3. Python</a></li>
-<li><a href="#orgb2f3061">4. Smalltalk</a></li>
+<li><a href="#org149be1f">3. Python</a></li>
+<li><a href="#orgd8f836f">4. Smalltalk</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaa8ba8f" class="outline-2">
-<h2 id="orgaa8ba8f"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org5e31373" class="outline-2">
+<h2 id="org5e31373"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Back in 2014, I tried taking <a href="https://www.coursera.org/instructor/~1289035">Pascal Van Hentenryck</a>'s Coursera course on <a href="https://www.coursera.org/learn/discrete-optimization">Discreet Optimization</a>. It was well over my head, but I feel like I learned a lot watching the videos and trying unsuccessfully to complete the early assignments. Later I came across {Norvig's Book}. 
@@ -269,8 +269,8 @@ nil</div>
 Much of Van Hentenryck's course is what was once artificial intelligence. The first important topic is search. Although I had written depth first and breadth first search algorithms in Racket for Tim Roughgarden's <a href="https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPaced/about">Alogorithms Design and Analysis</a> course on Coursera, I didn't understand how to manipulate the implementation.  {Norvig's Book} has a very clear modular approach to search and provides several techniques to potentially improve its performance.
 </p>
 </div>
-<div id="outline-container-org6f9f1b2" class="outline-3">
-<h3 id="org6f9f1b2"><span class="section-number-3">1.1</span> A Set of Search Tools</h3>
+<div id="outline-container-org00596c3" class="outline-3">
+<h3 id="org00596c3"><span class="section-number-3">1.1</span> A Set of Search Tools</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Search can be described as [see {Norvig's Book} section 6.4]:
@@ -286,8 +286,8 @@ Search can be described as [see {Norvig's Book} section 6.4]:
 </div>
 </div>
 
-<div id="outline-container-org50edc63" class="outline-2">
-<h2 id="org50edc63"><span class="section-number-2">2</span> Common Lisp</h2>
+<div id="outline-container-orgb42db61" class="outline-2">
+<h2 id="orgb42db61"><span class="section-number-2">2</span> Common Lisp</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 This is the base implementation since {Norvig's Book} is informing the design.
@@ -297,23 +297,21 @@ This is the base implementation since {Norvig's Book} is informing the design.
 
 &lt;&lt;cl-tree-search&gt;&gt;
 
-&lt;&lt;cl-is&gt;&gt;
-
 &lt;&lt;cl-successors&gt;&gt;
 
 &lt;&lt;cl-depth-first&gt;&gt;
 
-&lt;&lt;cl-prepend&gt;&gt;
-
 &lt;&lt;cl-breadth-first&gt;&gt;
+
+&lt;&lt;cl-helpers&gt;&gt;
 </pre>
 </div>
 </div>
-<div id="outline-container-org4809a36" class="outline-3">
-<h3 id="org4809a36"><span class="section-number-3">2.1</span> tree search</h3>
+<div id="outline-container-org18ebe15" class="outline-3">
+<h3 id="org18ebe15"><span class="section-number-3">2.1</span> tree search</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-lisp" id="org510e115">(defun tree-search (states goal-p successors combiner)
+<pre class="src src-lisp" id="orge89807b">(defun tree-search (states goal-p successors combiner)
   "Find a state that satisfies goal-p. Start with states.
 and serach according to successors and combiner."
   (dbg :search "~&amp;;; Search: ~a" states)
@@ -332,24 +330,28 @@ and serach according to successors and combiner."
 </div>
 </div>
 </div>
-<div id="outline-container-orgabc7637" class="outline-3">
-<h3 id="orgabc7637"><span class="section-number-3">2.2</span> goal-p</h3>
+<div id="outline-container-org393aa5f" class="outline-3">
+<h3 id="org393aa5f"><span class="section-number-3">2.2</span> goal-p</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 One of the things Common Lisp emphasizes is good names. A good name for a predicate generator is <code>is</code> &#x2026;depending on how 'is' is defined.
 </p>
 <div class="org-src-container">
-<pre class="src src-lisp" id="org8f47755">(defun is (value)
+<pre class="src src-lisp" id="orgc8d3981">(defun is (value)
   #'(lambda (x) (eql x value)))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5508813" class="outline-3">
-<h3 id="org5508813"><span class="section-number-3">2.3</span> successors</h3>
+<div id="outline-container-orgd889af4" class="outline-3">
+<h3 id="orgd889af4"><span class="section-number-3">2.3</span> successors</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
-<pre class="src src-lisp" id="org12ad606">&lt;&lt;cl-inifinite-binary-tree&gt;&gt;
+<pre class="src src-lisp" id="orgb31aa09">;;;;;;;;;;;;;;;;
+;; SUCCESSORS ;;
+;;;;;;;;;;;;;;;;
+
+&lt;&lt;cl-inifinite-binary-tree&gt;&gt;
 
 &lt;&lt;cl-finite-binary-tree&gt;&gt;
 </pre>
@@ -358,7 +360,7 @@ One of the things Common Lisp emphasizes is good names. A good name for a predic
 As always, Common Lisp has a way of challenging me. Rather than defining a data set to search, Norvig defines a binary tree with a function. Although now that I think about it, that's how we really want to think about search &#x2013; we want to think about search over a stream that might be infinite rather than a haystack of fixed size. Even when the stream of possible solutions is bounded, combinatorial explosion produces a solution space that is for practical purposes equivalent to an infinite one.
 </p>
 <div class="org-src-container">
-<pre class="src src-lisp" id="org625895c">(defun binary-tree (x)
+<pre class="src src-lisp" id="orgcfb1fad">(defun binary-tree (x)
   (list (* 2 x) (+ 1 (* 2 x))))
 </pre>
 </div>
@@ -366,7 +368,7 @@ As always, Common Lisp has a way of challenging me. Rather than defining a data 
 For testing it makes sense to have a finite binary tree as well. Again, the tree is generated with a function (that's the idea of successors), but it prunes the successors that don't meet the criteria. <b>The important point here, is that <code>successor</code> does the pruning.</b> That was hard to see when I was trying to right these functions previously.
 </p>
 <div class="org-src-container">
-<pre class="src src-lisp" id="org9356e6b">(defun finite-binary-tree (n)
+<pre class="src src-lisp" id="org1a1ef84">(defun finite-binary-tree (n)
   "Return a successor function that generates a binary tree with n nodes."
   #'(lambda (x)
       (remove-if #'(lambda (child) (&gt; child n))
@@ -375,25 +377,25 @@ For testing it makes sense to have a finite binary tree as well. Again, the tree
 </div>
 </div>
 </div>
-<div id="outline-container-orgb5d52d7" class="outline-3">
-<h3 id="orgb5d52d7"><span class="section-number-3">2.4</span> depth first</h3>
+<div id="outline-container-org01f1320" class="outline-3">
+<h3 id="org01f1320"><span class="section-number-3">2.4</span> depth first</h3>
 <div class="outline-text-3" id="text-2-4">
 <div class="org-src-container">
-<pre class="src src-lisp" id="org2094a83">(defun depth-first-search (start goal-p successors)
+<pre class="src src-lisp" id="org03610a3">(defun depth-first-search (start goal-p successors)
   "Search new states first until goal is reached."
   (tree-search (list start) goal-p successors #'append))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3fd2060" class="outline-3">
-<h3 id="org3fd2060"><span class="section-number-3">2.5</span> breadth first search</h3>
+<div id="outline-container-org6ab535b" class="outline-3">
+<h3 id="org6ab535b"><span class="section-number-3">2.5</span> breadth first search</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 The difference between depth first and breadth first search is that earlier successors are searched before later successors. To create this, use a simple analog to <code>append</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-lisp" id="org05e197e">(defun prepend (x y)
+<pre class="src src-lisp" id="orgd7c6d1a">(defun prepend (x y)
   "Prepend y to the start of x."
   (append y x))
 </pre>
@@ -402,21 +404,32 @@ The difference between depth first and breadth first search is that earlier succ
 Defining a breadth first search from tree search becomes:
 </p>
 <div class="org-src-container">
-<pre class="src src-lisp" id="orgaf57081">(defun breadth-first-search (start goal-p successors)
+<pre class="src src-lisp" id="org2042c91">(defun breadth-first-search (start goal-p successors)
   "Search oldest states first until goal is reached."
   (tree-search (list start) goal-p successors #'prepend))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7bde765" class="outline-3">
-<h3 id="org7bde765"><span class="section-number-3">2.6</span> Helpers</h3>
+<div id="outline-container-org571433e" class="outline-3">
+<h3 id="org571433e"><span class="section-number-3">2.6</span> Helpers</h3>
 <div class="outline-text-3" id="text-2-6">
-</div><div id="outline-container-org5eb9bf1" class="outline-4">
-<h4 id="org5eb9bf1"><span class="section-number-4">2.6.1</span> auto-generation header</h4>
+<div class="org-src-container">
+<pre class="src src-lisp" id="org3ec4c36">;;;;;;;;;;;;;
+;; HELPERS ;;
+;;;;;;;;;;;;;
+
+&lt;&lt;cl-is&gt;&gt;
+
+&lt;&lt;cl-prepend&gt;&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-org48c2da1" class="outline-4">
+<h4 id="org48c2da1"><span class="section-number-4">2.6.1</span> auto-generation header</h4>
 <div class="outline-text-4" id="text-2-6-1">
 <div class="org-src-container">
-<pre class="src src-lisp" id="orgc1d7253">;;; This file was autogenerated using org-babel-tangle
+<pre class="src src-lisp" id="orga7ecf4a">;;; This file was autogenerated using org-babel-tangle
 ;;; on the literate programming document located in the
 ;;; root directory of the git repository.
 </pre>
@@ -425,16 +438,16 @@ Defining a breadth first search from tree search becomes:
 </div>
 </div>
 </div>
-<div id="outline-container-org0b9ebde" class="outline-2">
-<h2 id="org0b9ebde"><span class="section-number-2">3</span> Python</h2>
+<div id="outline-container-org149be1f" class="outline-2">
+<h2 id="org149be1f"><span class="section-number-2">3</span> Python</h2>
 </div>
-<div id="outline-container-orgb2f3061" class="outline-2">
-<h2 id="orgb2f3061"><span class="section-number-2">4</span> Smalltalk</h2>
+<div id="outline-container-orgd8f836f" class="outline-2">
+<h2 id="orgd8f836f"><span class="section-number-2">4</span> Smalltalk</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: benrudgers</p>
-<p class="date">Created: 2017-05-22 Mon 21:15</p>
+<p class="date">Created: 2017-05-22 Mon 21:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
