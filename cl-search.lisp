@@ -4,7 +4,7 @@
 
 (defun tree-search (states goal-p successors combiner)
   "Find a state that satisfies goal-p. Start with states.
-and serach according to successors and combiner."
+and search according to successors and combiner."
   (dbg :search "~&;; Search: ~a" states)
   (cond
     ((null states) ;nothing left to search
